@@ -5,6 +5,14 @@ use App\Http\Controllers\Account\SecurityController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\Auth\RegisterController;
+
+Route::get('/register/{role}', [RegisterController::class, 'showRegistrationForm'])
+    ->where('role', 'owner|visitor')
+    ->name('register.role');
+
+Route::post('/register/{role}', [RegisterController::class, 'register'])
+    ->where('role', 'owner|visitor');
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
