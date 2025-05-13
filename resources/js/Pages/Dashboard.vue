@@ -2,8 +2,7 @@
 import { Head, usePage } from '@inertiajs/vue3'
 
 // Optional: Du kannst hier noch Props oder Zustand auslesen
-const page = usePage()
-const user = page.props.auth.user
+const user = usePage().props.auth.user
 </script>
 
 <template>
@@ -13,21 +12,8 @@ const user = page.props.auth.user
     </Head>
 
     <!-- Hauptinhalt -->
-    <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
-        <!-- Beispiel-Kartenzeile -->
-        <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div class="bg-sidebar aspect-video rounded-xl"></div>
-            <div class="bg-sidebar aspect-video rounded-xl"></div>
-            <div class="bg-sidebar aspect-video rounded-xl"></div>
-        </div>
-
-        <!-- Langer Inhaltsbereich -->
-        <div class="bg-sidebar min-h-[100vh] flex-1 rounded-xl md:min-h-min">
-            <!-- Hier z. B. personalisierte Begrüßung -->
-            <h2 class="text-lg font-semibold mb-4">
-                Willkommen zurück, {{ user.name }}!
-            </h2>
-            <!-- Weitere Dashboard-Widgets… -->
-        </div>
+    <div class="p-4">
+        <h1>Willkommen, {{ user.name }}!</h1>
+        <!-- CoreUI-Widgets hier… -->
     </div>
 </template>

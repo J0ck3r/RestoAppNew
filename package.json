@@ -21,7 +21,10 @@
         "format:check": "prettier --check ."
     },
     "dependencies": {
+        "@coreui/icons-vue": "^2.2.0",
+        "@coreui/vue": "^4.10.2",
         "@vueuse/core": "^12.8.2",
+        "bootstrap": "^5.3.6",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "lucide-vue-next": "^0.475.0",
