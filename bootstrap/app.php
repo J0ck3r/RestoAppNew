@@ -14,8 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
         ]);
-
-        //
+        $middleware->alias([
+            'role.owner'      => \App\Http\Middleware\EnsureUserIsOwner::class,
+            'role.restaurant' => \App\Http\Middleware\EnsureUserIsRestaurant::class,
+            'role.admin'      => \App\Http\Middleware\EnsureUserIsAdmin::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

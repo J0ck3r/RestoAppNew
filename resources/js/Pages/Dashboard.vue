@@ -1,23 +1,33 @@
 <script setup lang="ts">
-import AuthenticatedLayout from '@/layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3'
+
+// Optional: Du kannst hier noch Props oder Zustand auslesen
+const page = usePage()
+const user = page.props.auth.user
 </script>
 
 <template>
+    <!-- Meta-Titel für die Seite -->
     <Head>
         <title>Dashboard</title>
     </Head>
 
-    <AuthenticatedLayout>
-        <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
-            <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-                <div class="bg-sidebar aspect-video rounded-xl"></div>
-                <div class="bg-sidebar aspect-video rounded-xl"></div>
-                <div class="bg-sidebar aspect-video rounded-xl"></div>
-            </div>
-            <div
-                class="bg-sidebar min-h-[100vh] flex-1 rounded-xl md:min-h-min"
-            ></div>
+    <!-- Hauptinhalt -->
+    <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
+        <!-- Beispiel-Kartenzeile -->
+        <div class="grid auto-rows-min gap-4 md:grid-cols-3">
+            <div class="bg-sidebar aspect-video rounded-xl"></div>
+            <div class="bg-sidebar aspect-video rounded-xl"></div>
+            <div class="bg-sidebar aspect-video rounded-xl"></div>
         </div>
-    </AuthenticatedLayout>
+
+        <!-- Langer Inhaltsbereich -->
+        <div class="bg-sidebar min-h-[100vh] flex-1 rounded-xl md:min-h-min">
+            <!-- Hier z. B. personalisierte Begrüßung -->
+            <h2 class="text-lg font-semibold mb-4">
+                Willkommen zurück, {{ user.name }}!
+            </h2>
+            <!-- Weitere Dashboard-Widgets… -->
+        </div>
+    </div>
 </template>

@@ -4,7 +4,7 @@
             <h2 class="text-lg font-bold">Registrierung als {{ ucfirst($role) }}</h2>
         </x-slot>
 
-        <form method="POST" action="{{ route('register.role', ['role' => $role]) }}">
+        <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <div>
