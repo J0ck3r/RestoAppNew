@@ -33,11 +33,10 @@ Route::middleware(['auth','role.restaurant'])
         Route::get('/dashboard',[RestaurantDashboard::class,'index'])->name('dashboard');
     });
 
-// Besucher-Dashboard (verified + Visitor-Rolle)
-Route::middleware(['auth','verified','role:Visitor'])
-    ->get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+Route::middleware(['auth','verified','role.visitor'])
+    ->prefix('visitor')->name('visitor.')
+    ->group(fn() => Route::get('/dashboard', fn() => Inertia::render('Dashboard'))->name('dashboard'));
+
 
 // Landing-Page
 Route::get('/', function () {
